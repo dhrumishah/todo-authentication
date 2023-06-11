@@ -64,6 +64,7 @@ import express from "express";
 import userRouter from "./routes/user.js";
 import taskRouter from "./routes/task.js";
 import cookieParser from "cookie-parser";
+import { errorMiddleware } from "./middlewares/error.js";
 
 export const app = express();
 
@@ -77,3 +78,5 @@ app.use("/api/v1/tasks", taskRouter);
 app.get("/", (req, res) => {
   res.send("Nice work");
 });
+
+app.use(errorMiddleware);
